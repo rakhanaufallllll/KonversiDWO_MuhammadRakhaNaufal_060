@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Schema name="fact">
+
+<Cube name="Fact" defaultMeasure="Amount">
+  <Table name="fact_tabel"/>
+
+  <Dimension name="Customer" foreignKey="sk_customer">
+    <Hierarchy hasAll="true" allMemberName="All Customer" primaryKey="sk_customer">
+      <Table name="dim_customer" />
+      <Level name="CustomerName" column="customer_name"/>
+    </Hierarchy>
+  </Dimension>
+      
+  <Dimension name="Film" foreignKey="sk_film">
+    <Hierarchy hasAll="true" allMemberName="All Film" primaryKey="sk_film">
+      <Table name="dim_film" />
+      <Level name="FilmTitle" column="film_title"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Payment" foreignKey="sk_payment">
+    <Hierarchy hasAll="true" allMemberName="All Payment" primaryKey="sk_payment">
+      <Table name="dim_payment" />
+      <Level name="Amount" column="amount"/>
+    </Hierarchy>
+  </Dimension>
+
+    <Dimension name="RentalDate" foreignKey="sk_rentaldate">
+    <Hierarchy hasAll="true" allMemberName="All Rental Date" primaryKey="sk_rentaldate">
+      <Table name="dim_rentaldate" />
+      <Level name="DeskripsiTanggal" column="deskripsi_tanggal"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Staff" foreignKey="sk_staff">
+    <Hierarchy hasAll="true" allMemberName="All Staff" primaryKey="sk_staff">
+      <Table name="dim_staff" />
+      <Level name="StaffFullName" column="staff_fullname"/>
+    </Hierarchy>
+  </Dimension>
+  
+    <Dimension name="Store" foreignKey="sk_store">
+    <Hierarchy hasAll="true" allMemberName="All Store" primaryKey="sk_store">
+      <Table name="dim_store" />
+      <Level name="StoreManagerFullName" column="store_manager_fullname"/>
+    </Hierarchy>
+  </Dimension>
+
+  <!-- Measures -->
+    <Measure name="TotalAmount" column="amount" aggregator="sum" formatString="Standard"/>
+    <Measure name="Total Sales" column="sales_id" aggregator="count" formatString="#,##0" />
+  
+</Cube>
+
+
+</Schema>
