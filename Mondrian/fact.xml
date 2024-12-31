@@ -48,7 +48,6 @@
 
   <!-- Measures -->
     <Measure name="TotalAmount" column="amount" aggregator="sum" formatString="Standard"/>
-    <Measure name="Total Sales" column="sales_id" aggregator="count" formatString="#,##0" />
   
 </Cube>
 
